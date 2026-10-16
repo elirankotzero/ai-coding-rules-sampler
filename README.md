@@ -45,7 +45,7 @@ Full text: [`codex/AGENTS.md`](codex/AGENTS.md).
 
 ```bash
 # example: Claude Code
-git clone https://github.com/<you>/ai-coding-rules-sampler /tmp/sampler
+git clone https://github.com/elirankotzero/ai-coding-rules-sampler /tmp/sampler
 cp -r /tmp/sampler/claude/. ./
 ```
 
