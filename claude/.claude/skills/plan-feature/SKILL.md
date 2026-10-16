@@ -1,0 +1,16 @@
+---
+name: plan-feature
+description: Plan a single feature before writing code. Writes or updates PLAN.md with goal, files, small steps and done-criteria. Use when starting a new feature or when the user asks for a plan.
+argument-hint: [feature description]
+---
+Plan this feature: $ARGUMENTS
+
+1. Read `PLAN.md` (create it from `workflows/PLAN.md` if it is missing), the README "Commands" section, and the code you'll touch.
+2. Write in PLAN.md:
+   - **Goal**: one sentence, user-visible.
+   - **Constraints / non-goals**.
+   - **Files to touch**: existing and new.
+   - **Steps**: 3–8 small steps, each independently verifiable, with the check command for each.
+   - **Done criteria**: behaviour plus checks (lint, typecheck, tests, build) all green.
+   - **Risks / open questions**: security, data and migrations, new dependencies.
+3. Do NOT write code yet. Show the plan and ask for approval.
