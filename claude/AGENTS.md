@@ -1,4 +1,4 @@
-<!-- KitQuarry Free Sampler v1.1.0. This file is yours: edit it freely. It is the single source of truth for Codex, Cursor, Windsurf/Devin, Copilot and (via @AGENTS.md in CLAUDE.md) Claude Code. Keep the Decisions log at the end. -->
+<!-- KitQuarry Free Sampler v1.1.2. This file is yours: edit it freely. It is the single source of truth for Codex, Cursor, Windsurf/Devin, Copilot and (via @AGENTS.md in CLAUDE.md) Claude Code. Keep the Decisions log at the end. -->
 # AGENTS.md: Free Sampler
 
 Free sampler: core engineering, security and agent-workflow rules, plus the /plan-feature, /review-changes and /record-decisions skills. AGENTS.md is the single source of truth; CLAUDE.md imports it.
@@ -44,7 +44,7 @@ Free sampler: core engineering, security and agent-workflow rules, plus the /pla
 ### Dependencies
 - Before adding a package, check that it's maintained, widely used and has no open critical advisories. Check for typosquatting: confirm the exact name and publisher.
 - Run `npm audit --omit=dev` / `pip-audit` after dependency changes. Keep the lockfile committed.
-- Never run install scripts or binaries from untrusted sources. Don't `curl | sh`.
+- Never run install scripts or binaries from untrusted sources. Run a downloaded script only if it comes from a trusted source, and only after reading it, pinning its version and verifying the pinned artifact (checksum or signature).
 
 ### AI-specific
 - Treat LLM output and tool results as untrusted input: validate before executing, storing or rendering.
@@ -71,4 +71,4 @@ Free sampler: core engineering, security and agent-workflow rules, plus the /pla
 Durable project decisions, appended at the end of a session with `/record-decisions` (append-only, newest last).
 Format: `- YYYY-MM-DD: <decision>. Why: <reason>. Rejected: <alternatives>.`
 
-- 2026-10-16: Adopted KitQuarry Free Sampler v1.1.0; AGENTS.md is the single source of truth for all AI tools (CLAUDE.md imports it). Why: one file to maintain. Rejected: per-tool copies.
+- 2026-10-18: Adopted KitQuarry Free Sampler v1.1.2; AGENTS.md is the single source of truth for all AI tools (CLAUDE.md imports it). Why: one file to maintain. Rejected: per-tool copies.

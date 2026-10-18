@@ -4,7 +4,7 @@ Free, copy-paste rules and skills that make AI coding agents **plan first, stay 
 
 - 3 always-on rules: core engineering, security, and agent workflow
 - 3 skills / slash commands: `/plan-feature`, `/review-changes`, `/record-decisions`
-- 5 formats: `.cursor/rules/*.mdc`, `CLAUDE.md` + `.claude/skills`, `AGENTS.md` + `.agents/skills`, `.windsurf/rules` + workflows, `.github/copilot-instructions.md` + prompts
+- 5 formats: `.cursor/rules/*.mdc`, `CLAUDE.md` + `.claude/skills`, `AGENTS.md` + `.agents/skills`, `.windsurf/rules` + skills (and legacy workflows), `.github/copilot-instructions.md` + prompts
 - MIT licensed. Use it in any project, commercial included.
 
 ## What the rules tell your agent
@@ -40,28 +40,31 @@ Full text: [`codex/AGENTS.md`](codex/AGENTS.md).
 | **Cursor** | `cursor/.cursor/` | Settings → Rules: `core`, `security`, `agent-workflow` show as Always. Workflows: type `@plan-feature`. |
 | **Claude Code** | `claude/CLAUDE.md`, `claude/AGENTS.md`, `claude/.claude/` | Run `/context`. CLAUDE.md's first line `@AGENTS.md` imports the rules. Skills: `/plan-feature`, `/review-changes`, `/record-decisions`. |
 | **Codex** (and other AGENTS.md tools) | `codex/AGENTS.md`, `codex/.agents/` | Codex reads AGENTS.md automatically. Skills: `$plan-feature`, `$record-decisions`. |
-| **Windsurf / Devin** | `windsurf/.windsurf/` | Rules show as always-on; workflows run as `/plan-feature`. |
+| **Windsurf / Devin** | `windsurf/.windsurf/` | Rules show as always-on; skills in `.windsurf/skills/` run as `/plan-feature` (Cascade, Devin Desktop, Devin CLI); legacy `.windsurf/workflows/` kept for older builds. |
 | **GitHub Copilot** | `copilot/.github/` | `copilot-instructions.md` applies to every chat; prompts run as `/plan-feature` in VS Code. |
 
 ```bash
 # example: Claude Code
 git clone https://github.com/elirankotzero/ai-coding-rules-sampler /tmp/sampler
 cp -r /tmp/sampler/claude/. ./
+cp -n /tmp/sampler/workflows/PLAN.md ./PLAN.md   # optional plan template; /plan-feature also creates it if missing
 ```
 
 Already have an AGENTS.md or CLAUDE.md? Merge the sections instead of overwriting, and keep **one** AGENTS.md as the source of truth. In CLAUDE.md, add `@AGENTS.md` at the top.
 
+`workflows/PLAN.md` is the plan template `/plan-feature` copies to your repo root as `PLAN.md` when you don't have one yet.
+
 Only want the raw Cursor rules? They're also in [`rules/`](rules/).
 
 ## The decisions log
-`AGENTS.md` ends with a `## Decisions log`. At the end of a session, run `/record-decisions` (Claude Code), `$record-decisions` (Codex) or the `/record-decisions` workflow (Windsurf). The agent lists what was decided, asks you, and appends dated one-liners, so the next session doesn't re-argue settled choices.
+`AGENTS.md` ends with a `## Decisions log`. At the end of a session, run `/record-decisions` (Claude Code), `$record-decisions` (Codex) or the `/record-decisions` skill (Windsurf / Devin). The agent lists what was decided, asks you, and appends dated one-liners, so the next session doesn't re-argue settled choices.
 
 ## Want more?
 This sampler is a slice of the paid kits at **[kitquarry.com](https://kitquarry.com)**:
 - **AI Coding Rules Pack:** testing, git and code review rules; stack rules for TypeScript, React/Next.js, Python/FastAPI and Node; an agent-safe definition of done (never edit tests to pass); version pinning (Tailwind v4, Next.js 16, Supabase); local rule files for auth and billing; more skills.
 - **Starter kits:** a tested AI agent starter (TypeScript, MCP), a SaaS starter (Next.js 16, auth, Lemon Squeezy) and a Godot 4 game kit, with rules pre-installed.
 
-Free sampler zip and install docs: <https://kitquarry.com/free.html>
+Free sampler zip and install docs: <https://kitquarry.com/free>
 
 ## License
 MIT. See [LICENSE](LICENSE).

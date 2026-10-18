@@ -1,4 +1,4 @@
-<!-- KitQuarry Free Sampler v1.1.0 · https://kitquarry.com · MIT -->
+<!-- KitQuarry Free Sampler v1.1.2 · https://kitquarry.com · MIT -->
 @AGENTS.md
 
 ## Claude Code
